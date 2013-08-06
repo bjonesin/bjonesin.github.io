@@ -25,6 +25,16 @@ var mapProp = {
 
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
+var myTrip = [stavanger,amsterdam,london,stavanger];
+var flightPath = new google.maps.Polygon({
+  path:myTrip,
+  strokeColor:"#0000FF",
+  strokeOpacity:0.8,
+  strokeWeight:2,
+  fillColor:"#0000FF",
+  fillOpacity:0.4
+});
+
 var marker = new google.maps.Marker({
   position: myCenter,
   title:'Click to zoom'
