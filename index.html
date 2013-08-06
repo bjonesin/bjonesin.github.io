@@ -6,10 +6,7 @@ Test Polygon
 <script
 src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDsqcDq5W8aPUa-0IX3jRnHKb_fNvlhgm8&sensor=false">
 </script>
-
 <script>
-var myCenter=new google.maps.LatLng(47.0941, 51.9083);
-
 var x=new google.maps.LatLng(46.152778, 53.383333);
 var stavanger=new google.maps.LatLng(46.0910,53.2300);
 var amsterdam=new google.maps.LatLng(46.152778, 53.383333);
@@ -18,43 +15,46 @@ var london=new google.maps.LatLng(46.152800,53.24);
 function initialize()
 {
 var mapProp = {
-  center: myCenter,
-  zoom:2,
+  center:x,
+  zoom:4,
   mapTypeId: google.maps.MapTypeId.ROADMAP
   };
+  
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-var myTrip = [stavanger,amsterdam,london,stavanger];
-var flightPath = new google.maps.Polygon({
+var myTrip=[stavanger,amsterdam,london,stavanger];
+var flightPath=new google.maps.Polygon({
   path:myTrip,
   strokeColor:"#0000FF",
   strokeOpacity:0.8,
   strokeWeight:2,
   fillColor:"#0000FF",
   fillOpacity:0.4
-});
+  });
 
-var marker = new google.maps.Marker({
-  position: myCenter,
-  title:'Click to zoom'
+flightPath.setMap(map);
+}
+
+var marker=new google.maps.Marker({
+  position:myCenter,
   });
 
 marker.setMap(map);
 
-// Zoom to 9 when clicking on marker
-google.maps.event.addListener(marker,'click',function() {
-  map.setZoom(14);
-  map.setCenter(marker.getPosition());
+var infowindow = new google.maps.InfoWindow({
+  content:"Hello World!"
   });
-     
+
+google.maps.event.addListener(marker, 'click', function() {
+  infowindow.open(map,marker);
+  });
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 </head>
 
 <body>
 <div id="googleMap" style="width:500px;height:380px;"></div>
-
 </body>
 </html>
