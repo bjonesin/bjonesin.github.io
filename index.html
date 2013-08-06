@@ -12,6 +12,10 @@ function initialize()
     mapTypeId: google.maps.MapTypeId.HYBRID
   };
   var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  google.maps.event.addListener(weatherLayer, 'click', function(e) {
+  alert('The current temperature at ' + e.featureDetails.location + ' is '
+        + e.featureDetails.current.temperature + ' degrees.');
+});
 }
 
 function loadScript()
