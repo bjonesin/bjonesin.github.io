@@ -9,34 +9,85 @@ Border
 <script
 src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDsqcDq5W8aPUa-0IX3jRnHKb_fNvlhgm8&sensor=true">
 </script>
+
 <script>
+var myCenter=new google.maps.LatLng(46.152778, 53.383333);
 var x=new google.maps.LatLng(46.152778, 53.383333);
-var stavanger=new google.maps.LatLng(46.0910,53.2300);
-var amsterdam=new google.maps.LatLng(46.152778, 53.383333);
-var london=new google.maps.LatLng(46.152800,53.24);
+var Corner1=new google.maps.LatLng(46.16925104060476, 53.40986251831055);
+var Corner2=new google.maps.LatLng(46.13518116742138, 53.41054916381836);
+var Corner3=new google.maps.LatLng(46.13601384151079, 53.37063789367676);
+var Corner4=new google.maps.LatLng(46.16782445339593,  53.37527275085449);
 
 function initialize()
 {
 var mapProp = {
   center:x,
-  zoom:4,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
+  zoom:14,
+  mapTypeId: google.maps.MapTypeId.HYBRID
   };
   
 var map=new
+
+
 google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-var myTrip=[stavanger,amsterdam,london,stavanger];
-var flightPath=new google.maps.Polygon({
-  path:myTrip,
+var oilfield=[Corner1,Corner2,Corner3,Corner4];
+var oilfieldborder=new google.maps.Polygon({
+  path:oilfield,
   strokeColor:"#0000FF",
   strokeOpacity:0.8,
   strokeWeight:2,
   fillColor:"#0000FF",
   fillOpacity:0.4
+ 
   });
 
-flightPath.setMap(map);
+oilfieldborder.setMap(map);
+
+var oilfieldmarker=new google.maps.Marker({
+  position:myCenter,
+  });
+
+oilfieldmarker.setMap(map);
+// Zoom to 14 when clicking on marker
+google.maps.event.addListener(oilfieldmarker,'click',function() {
+  map.setZoom(14);
+  map.setCenter(marker.getPosition());
+  });
+var oifieldinfowindow = new google.maps.InfoWindow({
+  content:"Tengiz field owned by  BP "
+  });
+var marker=new google.maps.Marker({
+  position:google.maps.LatLng(47.09355893624853,  51.90872669219971)
+  });
+
+marker1.setMap(map);
+// Zoom to 14 when clicking on marker
+google.maps.event.addListener(marker1,'click',function() {
+  map.setZoom(14);
+  map.setCenter(marker.getPosition());
+  });
+var marker1infowindow = new google.maps.InfoWindow({
+  content:"Tengiz field owned by  BP "
+  });
+google.maps.event.addListener(marker, 'click', function() {
+  infowindow.open(map,marker);
+  });
+google.maps.event.addListener(map, 'click', function(event) {
+  placeMarker(event.latLng);
+  });
+
+function placeMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + location.lat() +
+    '<br>Longitude: ' + location.lng()
+  });
+  infowindow.open(map,marker);
+}
 }
 
 
