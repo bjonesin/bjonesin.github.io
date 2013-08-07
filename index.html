@@ -3,7 +3,7 @@ Border
 <html>
 <body>
 
-<table border="1">
+<table border="5">
   <tr>
     <th>
 <script
@@ -22,7 +22,7 @@ function initialize()
 {
 var mapProp = {
   center:x,
-  zoom:14,
+  zoom:5,
   mapTypeId: google.maps.MapTypeId.HYBRID
   };
   
@@ -55,7 +55,7 @@ google.maps.event.addListener(marker,'click',function() {
   map.setCenter(marker.getPosition());
   });
 var infowindow = new google.maps.InfoWindow({
-  content:"Tengiz field owned by  BP "
+  content:"Tengiz Oil field "
   });
 
 google.maps.event.addListener(marker, 'click', function() {
