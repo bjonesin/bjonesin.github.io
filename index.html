@@ -44,32 +44,20 @@ var oilfieldborder=new google.maps.Polygon({
 
 oilfieldborder.setMap(map);
 
-var oilfieldmarker=new google.maps.Marker({
+var marker=new google.maps.Marker({
   position:myCenter,
   });
 
-oilfieldmarker.setMap(map);
+marker.setMap(map);
 // Zoom to 14 when clicking on marker
-google.maps.event.addListener(oilfieldmarker,'click',function() {
+google.maps.event.addListener(marker,'click',function() {
   map.setZoom(14);
   map.setCenter(marker.getPosition());
   });
-var oifieldinfowindow = new google.maps.InfoWindow({
+var infowindow = new google.maps.InfoWindow({
   content:"Tengiz field owned by  BP "
-  });
-var marker=new google.maps.Marker({
-  position:google.maps.LatLng(47.09355893624853,  51.90872669219971)
   });
 
-marker1.setMap(map);
-// Zoom to 14 when clicking on marker
-google.maps.event.addListener(marker1,'click',function() {
-  map.setZoom(14);
-  map.setCenter(marker.getPosition());
-  });
-var marker1infowindow = new google.maps.InfoWindow({
-  content:"Tengiz field owned by  BP "
-  });
 google.maps.event.addListener(marker, 'click', function() {
   infowindow.open(map,marker);
   });
