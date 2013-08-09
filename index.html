@@ -26,6 +26,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDsqcDq5W8aPUa-0IX3jRnHKb_f
 
 <script>
 var myCenter=new google.maps.LatLng(46.152778, 53.383333);
+var Pete=new google.maps.LatLng(45.152778, 52.383333);
 var x=new google.maps.LatLng(46.152778, 53.383333);
 var Corner1=new google.maps.LatLng(46.16925104060476, 53.40986251831055);
 var Corner2=new google.maps.LatLng(46.13518116742138, 53.41054916381836);
@@ -54,7 +55,6 @@ var oilfieldborder=new google.maps.Polygon({
   strokeWeight:2,
   fillColor:"#0000FF",
   fillOpacity:0.4
- 
   });
 
 oilfieldborder.setMap(map);
@@ -78,7 +78,7 @@ google.maps.event.addListener(marker, 'click', function() {
   });
 var mapOptions = {
   zoom: 6,
-  center: new google.maps.LatLng(49.265984, -123.127491),
+  center: Pete,
   mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
@@ -97,6 +97,24 @@ var weatherLayer = new google.maps.weather.WeatherLayer({
 
 var cloudLayer = new google.maps.weather.CloudLayer();
   cloudLayer.setMap(map);
+
+var PeteCity=new google.maps.Marker({
+  position:Pete,
+  });
+
+PeteCity.setMap(map);
+// Zoom to 14 when clicking on marker
+google.maps.event.addListener(PeteCity,'click',function() {
+  map.setZoom(14);
+  map.setCenter(PeteCity.getPosition());
+  });
+var PeteBox = new google.maps.InfoWindow({
+  content:"CIty "
+  });
+
+google.maps.event.addListener(PeteCity, 'click', function() {
+  PeteBox.open(map,PeteCity);
+  });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
