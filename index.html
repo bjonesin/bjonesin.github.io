@@ -60,7 +60,7 @@ var marker=new google.maps.Marker({
 marker.setMap(map);
 // Zoom to 14 when clicking on marker
 google.maps.event.addListener(marker,'click',function() {
-  map.setZoom(14);
+  map.setZoom(10);
   map.setCenter(marker.getPosition());
   });
 var infowindow = new google.maps.InfoWindow({
