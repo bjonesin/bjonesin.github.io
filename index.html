@@ -8,7 +8,7 @@
 <em>
 <b>
 <font size="6">
-"ChangeTHisText"
+"Google Map For Pete!"
 </font>
 </b>
 <p>
@@ -26,7 +26,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDsqcDq5W8aPUa-0IX3jRnHKb_f
 
 <script>
 var myCenter=new google.maps.LatLng(46.152778, 53.383333);
-var Pete=new google.maps.LatLng(45.152778, 52.383333);
+var Pete=new google.maps.LatLng(47.09390953794664,  51.90842628479004);
 var x=new google.maps.LatLng(46.152778, 53.383333);
 var Corner1=new google.maps.LatLng(46.16925104060476, 53.40986251831055);
 var Corner2=new google.maps.LatLng(46.13518116742138, 53.41054916381836);
@@ -95,7 +95,7 @@ google.maps.event.addListener(PeteCity,'click',function() {
   map.setCenter(PeteCity.getPosition());
   });
 var PeteBox = new google.maps.InfoWindow({
-  content:"CIty "
+  content:"Munayshy Stadium"
   });
 google.maps.event.addListener(PeteCity, 'click', function() {
   PeteBox.open(map,PeteCity);
