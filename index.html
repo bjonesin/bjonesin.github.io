@@ -26,67 +26,37 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDsqcDq5W8aPUa-0IX3jRnHKb_f
 
 <script>
 var myCenter=new google.maps.LatLng(46.152778, 53.383333);
-var Pete=new google.maps.LatLng(47.09390953794664,  51.90842628479004);
-var x=new google.maps.LatLng(46.152778, 53.383333);
-var Corner1=new google.maps.LatLng(46.16925104060476, 53.40986251831055);
-var Corner2=new google.maps.LatLng(46.13518116742138, 53.41054916381836);
-var Corner3=new google.maps.LatLng(46.13601384151079, 53.37063789367676);
-var Corner4=new google.maps.LatLng(46.16782445339593,  53.37527275085449);
+var office=new google.maps.LatLng( 47.10824570918586, 51.92112922668457);
+var x=new google.maps.LatLng(47.65058757118734, 57.50244140625);
+var hotellocation=new google.maps.LatLng(47.101680616262186, 51.91318988800049);
+var cosmosphere=new google.maps.LatLng( 45.88618457602257, 63.312835693359375);
+
+
 
 function initialize()
 {
 var mapProp = {
   center:x,
-  zoom:3,
+  zoom:5,
   mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 var map=new
 google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 
-var oilfield=[Corner1,Corner2,Corner3,Corner4];
-var oilfieldborder=new google.maps.Polygon({
-  path:oilfield,
-  strokeColor:"#0000FF",
-  strokeOpacity:0.8,
-  strokeWeight:2,
-  fillColor:"#0000FF",
-  fillOpacity:0.4
-  });
-oilfieldborder.setMap(map);
-var marker=new google.maps.Marker({
-  position:myCenter,
-  });
-marker.setMap(map);
-// Zoom to 14 when clicking on marker
-google.maps.event.addListener(marker,'click',function() {
-  map.setZoom(10);
-  map.setCenter(marker.getPosition());
-  });
-var infowindow = new google.maps.InfoWindow({
-  content:"Tengiz Oil field "
-  });
-google.maps.event.addListener(marker, 'click', function() {
-  infowindow.open(map,marker);
-  });
-
 
 var weatherLayer = new google.maps.weather.WeatherLayer({
   temperatureUnits: google.maps.weather.TemperatureUnit.FAHRENHEIT
 });
 weatherLayer.setMap(map);
-var cloudLayer = new google.maps.weather.CloudLayer();
-  cloudLayer.setMap(map);
 var weatherLayer = new google.maps.weather.WeatherLayer({
   temperatureUnits: google.maps.weather.TemperatureUnit.FAHRENHEIT
   });
   weatherLayer.setMap(map);
-var cloudLayer = new google.maps.weather.CloudLayer();
-  cloudLayer.setMap(map);
 
 
 var PeteCity=new google.maps.Marker({
-  position:Pete,
+  position:hotellocation,
   });
 PeteCity.setMap(map);
 // Zoom to 14 when clicking on marker
@@ -95,13 +65,31 @@ google.maps.event.addListener(PeteCity,'click',function() {
   map.setCenter(PeteCity.getPosition());
   });
 var PeteBox = new google.maps.InfoWindow({
-  content:"Munayshy Stadium"
+  content:('<a href="https://maps.google.com/maps?daddr=Chagala+Atyrau+Hotel,+Ismagulova+Street+1,+Atyrau+060002,+Kazakhstan&hl=en&sll=47.114883,51.917782&sspn=0.060513,0.110378&geocode=Fb-2zgIdVCIYAykN3bL1JuqjQTFj90frKNkfcg&mra=ls&t=m&z=13" target="_blank">Driving Directions from Hotel</a>')
   });
 google.maps.event.addListener(PeteCity, 'click', function() {
   PeteBox.open(map,PeteCity);
   });
 
+var Hotel=new google.maps.Marker({
+  position:office,
+  });
+Hotel.setMap(map);
+// Zoom to 14 when clicking on marker
+google.maps.event.addListener(Hotel,'click',function() {
+  map.setZoom(14);
+  map.setCenter(Hotel.getPosition());
+  });
 
+var cosmo=new google.maps.Marker({
+  position:cosmosphere,
+  });
+cosmo.setMap(map);
+// Zoom to 14 when clicking on marker
+google.maps.event.addListener(cosmo,'click',function() {
+  map.setZoom(10);
+  map.setCenter(cosmo.getPosition());
+  });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
