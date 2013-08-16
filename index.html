@@ -65,7 +65,7 @@ google.maps.event.addListener(PeteCity,'click',function() {
   map.setCenter(PeteCity.getPosition());
   });
 var PeteBox = new google.maps.InfoWindow({
-  content:('https://maps.google.com/maps?saddr=Chagala+Atyrau+Hotel,+Ismagulova+Street+1,+Atyrau+060002,+Kazakhstan&hl=en&sll=47.114883,51.917782&sspn=0.060747,0.108147&geocode=Fb-2zgIdVCIYAyFj90frKNkfcikN3bL1JuqjQTFj90frKNkfcg&mra=prev&t=m&z=13" target="_blank">Driving Directions from Hotel</a>')
+  content:('<a href="https://maps.google.com/maps?saddr=Chagala+Atyrau+Hotel,+Ismagulova+Street+1,+Atyrau+060002,+Kazakhstan&hl=en&sll=47.114883,51.917782&sspn=0.060747,0.108147&geocode=Fb-2zgIdVCIYAyFj90frKNkfcikN3bL1JuqjQTFj90frKNkfcg&mra=prev&t=m&z=13" target="_blank">Driving Directions from Hotel</a>')
   });
 google.maps.event.addListener(PeteCity, 'click', function() {
   PeteBox.open(map,PeteCity);
